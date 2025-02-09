@@ -15,13 +15,11 @@ function fetchCep(){
 
             const response = await fetch(url);
             if (!response.ok) {
-                fillFields({});
                 throw new Error('Erro na requisição');
             }
 
             const data = await response.json();
             if (data.erro) {
-                fillFields({logradouro: "", bairro: "", localidade: "", estado: ""});
                 throw new Error('CEP não encontrado');
             }
 
@@ -35,6 +33,7 @@ function fetchCep(){
 }
 
 function cepNotFound(){
+    fillFields({logradouro: "", bairro: "", localidade: "", estado: ""});
     alert("CEP não encontrado");
 }
 

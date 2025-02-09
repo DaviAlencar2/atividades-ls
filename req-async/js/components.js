@@ -1,4 +1,7 @@
 function createInputFields(){
+    const body = document.querySelector("body");
+    body.className = "flex flex-col items-center justify-center h-screen bg-gray-100";
+
     const fields = ["logradouro", "bairro", "localidade", "estado"];
     const form = document.createElement("form");
     form.id = "cepForm";
@@ -25,7 +28,6 @@ function createInputFields(){
 
     form.appendChild(inputBtnContainer);
 
-    //criando os inputs
     fields.forEach(field => {
         const input = document.createElement("input");
         input.name = field;
