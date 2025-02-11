@@ -1,40 +1,30 @@
-function fillFields(data){
-    const form = document.getElementById("cepForm");
-    const fields = ["logradouro", "bairro", "localidade", "estado"];
-    fields.forEach(field => {
-        form.querySelector(`input[name='${field}']`).value = data[field];
-    });
-}
+import { fillFields, cepNotFound, removeError } from "./utils.js";
 
 function fetchCep(){
     const btn = document.getElementById("btnCep");
+   
     btn.addEventListener("click", async () => {
         try {
             let cep = document.querySelector("input[name='cep']").value;
+            removeError();
             const url = `https://viacep.com.br/ws/${cep}/json/`;
-
             const response = await fetch(url);
+            
             if (!response.ok) {
-                throw new Error('Erro na requisição');
+                throw new Error("CEP não encontrado");
             }
 
             const data = await response.json();
+
             if (data.erro) {
-                throw new Error('CEP não encontrado');
+                throw new Error("CEP não encontrado");
             }
 
-            console.log(data);
             fillFields(data);
         } catch (error) {
-            console.error(error);
             cepNotFound();
         }
     });
-}
-
-function cepNotFound(){
-    fillFields({logradouro: "", bairro: "", localidade: "", estado: ""});
-    alert("CEP não encontrado");
 }
 
 fetchCep();

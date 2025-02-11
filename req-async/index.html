@@ -1,14 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Address</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Requisição Assíncrona</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <script src="js/components.js"></script>
-    <script src="js/main.js"></script>
+<body class="bg-blue-100 h-screen flex items-center justify-center">
+    <form id="cepForm"class="bg-gray-100 p-6 rounded-lg shadow-md w-1/4 mx-auto">
+        <div id="inputBtnContainer" class="flex flex-col items-center mb-4">
+            <input name="cep" placeholder="Digite o CEP: " class="border border-gray-300 p-2 rounded mb-2 w-full">
+            <button id="btnCep" type="button" class="bg-blue-500 text-white p-2 rounded w-full">Buscar CEP</button>
+        </div>
+        <input name="logradouro" placeholder="logradouro" class="border border-gray-300 p-2 rounded mb-2 w-full">
+        <input name="bairro" placeholder="bairro" class="border border-gray-300 p-2 rounded mb-2 w-full">
+        <input name="localidade" placeholder="localidade" class="border border-gray-300 p-2 rounded mb-2 w-full">
+        <input name="estado" placeholder="estado" class="border border-gray-300 p-2 rounded mb-2 w-full">
+    </form>
+
+    <script src="js/utils.js" type="module"></script>
+    <script src="js/main.js" type="module"></script>
 </body>
 </html>
